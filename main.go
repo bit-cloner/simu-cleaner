@@ -130,7 +130,7 @@ func main() {
 				//for each part
 				for _, part := range result.Parts {
 					//abort uploads that are older than 24 hours
-					oneDayAgo := time.Now().Add(-24 * time.Hour)
+					oneDayAgo := time.Now().Add(-5 * time.Second)
 					if part.LastModified.Before(oneDayAgo) {
 						_, err := svc.AbortMultipartUpload(&s3.AbortMultipartUploadInput{
 							Bucket:   aws.String(bucket),
@@ -144,14 +144,10 @@ func main() {
 						fmt.Println("deleted multipart upload of ", *part.Size/1024/1024, "MB from bucket", bucket)
 						var savedcost = float64(*part.Size) / 1024 / 1024 / 1024 * 0.023
 						totalcost += savedcost
-
 					}
 				}
-
 			}
-
 		}
-
 	}
 	fmt.Println("\nTotal cost saved is approximately", fmt.Sprintf("%.2f", totalcost), "USD per month")
 }
