@@ -130,7 +130,7 @@ func main() {
 				//for each part
 				for _, part := range result.Parts {
 					//abort uploads that are older than 24 hours
-					oneDayAgo := time.Now().Add(-5 * time.Second)
+					oneDayAgo := time.Now().Add(-24 * time.Hour)
 					if part.LastModified.Before(oneDayAgo) {
 						_, err := svc.AbortMultipartUpload(&s3.AbortMultipartUploadInput{
 							Bucket:   aws.String(bucket),
