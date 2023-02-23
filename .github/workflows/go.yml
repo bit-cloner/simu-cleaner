@@ -6,7 +6,6 @@ on:
   
 
 jobs:
-  permissions: write-all
   releases-matrix:
     name: Release Go Binary
     runs-on: ubuntu-latest
