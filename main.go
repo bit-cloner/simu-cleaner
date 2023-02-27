@@ -33,6 +33,8 @@ func main() {
 		"cn-north-1",
 		"cn-northwest-1",
 	}
+	var imusize int64
+	var totalcost float64
 	region := ""
 	prompt := &survey.Select{
 		Message: "Select one of the follwing AWS Regions",
@@ -52,9 +54,8 @@ func main() {
 
 	// List all S3 buckets
 	var allbuckets = []string{}
-	var imusize int64
-	var totalcost float64
-	result, err := svc.ListBuckets(nil)
+
+	result, err := svc.ListBuckets(&s3.ListBucketsInput{})
 	if err != nil {
 		fmt.Println("Error listing buckets", err)
 		os.Exit(1)
@@ -65,8 +66,6 @@ func main() {
 		allbuckets = append(allbuckets, *bucket.Name)
 
 	}
-	//print allbuckets
-	//fmt.Println(allbuckets)
 	//for each in allbuckets
 	for _, bucket := range allbuckets {
 		//list all multipart uploads
@@ -149,6 +148,7 @@ func main() {
 				}
 			}
 		} else {
+			fmt.Println("No incomplete multipart uploads found in bucket", bucket, "Skipping...")
 			continue
 		}
 	}
