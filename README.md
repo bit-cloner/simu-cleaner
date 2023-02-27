@@ -20,6 +20,7 @@ Chose the right artifact for your CPU architecture and OS type from https://gith
 ```
 wget https://github.com/bit-cloner/simu-cleaner/releases/download/0.6/simu-0.6-linux-amd64.tar.gz
 ```
+```
 tar -xvzf simu-0.6-linux-amd64.tar.gz
 ```
 ### How to use it
