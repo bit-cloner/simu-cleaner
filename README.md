@@ -13,6 +13,10 @@ Disclaimer: Some of the code in this repo has been sugeested by ChatGPT3 and Git
 4. Asks user to either skip or clean the data
 5. If user selects clean, deletes incomplete chunks. Reduced AWS bill 
 
+**Disclaimer**
+This publication is provided as is without any express or implied warranties.<br>
+While every effort has been taken to ensure the accuracy of the information contained in this publication, the authors/maintainers/contributors assume no responsibility for errors or omissions, or for damages resulting from the use of the information contained herein.
+
 ### Prerequisites
 1. AWS credentials with appropriate permissions to perform S3 actions
 ### How to get it
